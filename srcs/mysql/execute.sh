@@ -6,4 +6,4 @@
 # Exportas e inicializas la BD
 mysql wordpress -u root < wordpress.sql
 # Mantienes el contenedor corriendo
-tail -f /dev/nul
+tail -f /dev/null

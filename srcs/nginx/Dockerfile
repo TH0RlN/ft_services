@@ -24,4 +24,4 @@ COPY index.html /www
 #exponer los puertos 
 EXPOSE 80 443
 
-ENTRYPOINT /usr/sbin/nginx -g "daemon off;"
+CMD /usr/sbin/nginx -g "daemon off;"

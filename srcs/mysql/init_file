@@ -1,4 +1,3 @@
-
 CREATE DATABASE wordpress;
 CREATE USER 'rarias-p'@'%' IDENTIFIED BY '';
 GRANT ALL PRIVILEGES ON *.* TO 'rarias-p'@'%';
