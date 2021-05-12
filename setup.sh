@@ -36,12 +36,14 @@ docker build -t nginx srcs/nginx
 docker build -t wordpress srcs/wordpress
 docker build -t phpmyadmin srcs/phpmyadmin
 docker build -t mysql srcs/mysql
+docker build -t ftps srcs/ftps
 
 kubectl apply -f srcs/volumes.yaml
 kubectl apply -f srcs/nginx.yaml
 kubectl apply -f srcs/wordpress.yaml
 kubectl apply -f srcs/phpmyadmin.yaml
 kubectl apply -f srcs/mysql.yaml
+kubectl apply -f srcs/ftps.yaml
 
 minikube dashboard
 
