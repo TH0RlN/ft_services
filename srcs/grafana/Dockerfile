@@ -6,7 +6,8 @@ WORKDIR /usr/share/grafana
 
 RUN mkdir -p /usr/share/grafana/dashboards/panels
 COPY ./telegraf-datasource.yaml /usr/share/grafana/conf/provisioning/datasources/
-#COPY ./dashboards/panels.yaml /usr/share/grafana/conf/provisioning/dashboards/
+COPY ./telegraf-1621441133707.json /usr/share/grafana/conf/provisioning/datasources/
+COPY ./panels.yaml /usr/share/grafana/conf/provisioning/dashboards/
 #COPY ./dashboards/panels/* /usr/share/grafana/conf/provisioning/dashboards/panels/
 
 

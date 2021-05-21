@@ -19,9 +19,12 @@ RUN openssl req -x509 -nodes -days 365 \
 
 #archivo de configuración 
 COPY nginx.conf /etc/nginx/nginx.conf
+COPY css /www/css
+COPY assets /www/assets
+COPY js /www/js
 COPY index.html /www
 
 #exponer los puertos 
 EXPOSE 80 443
 
-CMD /usr/sbin/nginx -g "daemon off;"
+ENTRYPOINT /usr/sbin/nginx -g "daemon off;"
