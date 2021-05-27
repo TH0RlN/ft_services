@@ -1,15 +1,27 @@
-FROM alpine:3.12
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Dockerfile                                         :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: antmarti <antmarti@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/10/15 17:08:42 by fulldemo          #+#    #+#              #
+#    Updated: 2021/05/27 12:27:17 by antmarti         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-RUN  apk add --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ --allow-untrusted --no-cache grafana
-WORKDIR /usr/share/grafana
+FROM alpine:3.12.0
 
-RUN mkdir -p /usr/share/grafana/dashboards/panels
-COPY ./telegraf-datasource.yaml /usr/share/grafana/conf/provisioning/datasources/
-COPY ./telegraf-1621441133707.json /usr/share/grafana/conf/provisioning/datasources/
-COPY ./panels.yaml /usr/share/grafana/conf/provisioning/dashboards/
-#COPY ./dashboards/panels/* /usr/share/grafana/conf/provisioning/dashboards/panels/
+RUN apk update 
+	
+#Intall Grafana
+RUN		apk add grafana --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community/ &&\
+		rm -rf /var/cache/apk/*gz
 
+COPY	datasource.yaml /usr/share/grafana/conf/provisioning/datasources/influxdb.yaml
+COPY	dashboards.yaml /usr/share/grafana/conf/provisioning/dashboards/dashboards.yaml
+COPY	services.json /usr/share/grafana/public/dashboards/services.json
 
 EXPOSE 3000
 
-ENTRYPOINT grafana-server
+CMD /usr/sbin/grafana-server --config=/usr/share/grafana/conf/grafana.ini --homepath=/usr/share/grafana
