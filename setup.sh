@@ -30,7 +30,7 @@ minikube addons enable metallb
 minikube addons enable metrics-server
 minikube addons enable dashboard
 
-kubectl apply -f metallb.yaml
+kubectl apply -f srcs/metallb.yaml
 
 docker build -t nginx srcs/nginx
 docker build -t wordpress srcs/wordpress
