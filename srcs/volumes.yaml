@@ -19,7 +19,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: influxdb-pv-claim
   labels:
-    app: influxdb-app
+    app: influxdb
 spec:
   accessModes:
     - ReadWriteOnce
